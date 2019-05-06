@@ -10,11 +10,13 @@ Liquidsoap Harbors (Port 8010 – 8015) – *replace with direct Icecast (less 
 -> Icecast MP3 stream /lausch0 – /lausch5 (mono 192kbit/s)
 -> MP3 Dump
 
-# PD Server (Davids Thinkpad / Ubuntu)
+# Pure Data Server (Davids Thinkpad / Ubuntu)
 
-pwd: pd-server
+pwd: `pd-server`
 
 Start: `./start.sh`
 
 Liquidsoap Reciever HTTP stream (to Stereo)
 -> JACK
+
+purr-data
