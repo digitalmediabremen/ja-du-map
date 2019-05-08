@@ -1,0 +1,2 @@
+liquidsoap --verbose harbor.cfg &
+
