@@ -1,0 +1,27 @@
+ufw allow 8010
+ufw allow 8011
+ufw allow 8012
+ufw allow 8013
+ufw allow 8014
+ufw allow 8015
+ufw allow 8016
+ufw allow 8017
+ufw allow 8018
+ufw allow 8019
+ufw allow 8020
+ufw allow 8021
+ufw allow 8022
+
+ufw allow 2310
+ufw allow 2311
+ufw allow 2312
+ufw allow 2313
+ufw allow 2314
+ufw allow 2315
+ufw allow 2316
+ufw allow 2317
+ufw allow 2318
+ufw allow 2319
+ufw allow 2320
+ufw allow 2321
+ufw allow 2322

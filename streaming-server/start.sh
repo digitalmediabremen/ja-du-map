@@ -1,2 +1,13 @@
-liquidsoap --verbose harbor.cfg &
-
+liquidsoap harbor-8010.cfg &
+liquidsoap harbor-8011.cfg &
+liquidsoap harbor-8012.cfg &
+liquidsoap harbor-8013.cfg &
+liquidsoap harbor-8014.cfg &
+liquidsoap harbor-8015.cfg &
+liquidsoap harbor-8016.cfg &
+liquidsoap harbor-8017.cfg &
+liquidsoap harbor-8018.cfg &
+liquidsoap harbor-8019.cfg &
+liquidsoap harbor-8020.cfg &
+liquidsoap harbor-8021.cfg &
+liquidsoap harbor-8022.cfg &
