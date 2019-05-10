@@ -1,0 +1,104 @@
+<!DOCTYPE patchbay>
+<patchbay version="0.4.5" name="jack-setup">
+ <output-sockets>
+  <socket client="output\(dot\)jack" name="output\(dot\)jack 1" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="output\(dot\)jack\(dot\)1" name="output\(dot\)jack\(dot\) 1" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="output\(dot\)jack\(dot\)2" name="output\(dot\)jack\(dot\) 2" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="output\(dot\)jack\(dot\)3" name="output\(dot\)jack\(dot\) 3" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="output\(dot\)jack\(dot\)4" name="output\(dot\)jack\(dot\) 4" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="output\(dot\)jack\(dot\)5" name="output\(dot\)jack\(dot\) 5" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="output\(dot\)jack\(dot\)6" name="output\(dot\)jack\(dot\) 6" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="output\(dot\)jack\(dot\)7" name="output\(dot\)jack\(dot\) 7" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="output\(dot\)jack\(dot\)8" name="output\(dot\)jack\(dot\) 8" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="output\(dot\)jack\(dot\)9" name="output\(dot\)jack\(dot\) 9" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="output\(dot\)jack\(dot\)10" name="output\(dot\)jack\(dot\) 10" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="output\(dot\)jack\(dot\)11" name="output\(dot\)jack\(dot\) 11" type="jack-audio" exclusive="off">
+   <plug>out_0</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 1" type="jack-audio" exclusive="off">
+   <plug>output0</plug>
+   <plug>output1</plug>
+  </socket>
+ </output-sockets>
+ <input-sockets>
+  <socket client="pure_data_0" name="pure_data_ 1" type="jack-audio" exclusive="off">
+   <plug>input0</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 2" type="jack-audio" exclusive="off">
+   <plug>input1</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 13" type="jack-audio" exclusive="off">
+   <plug>input2</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 3" type="jack-audio" exclusive="off">
+   <plug>input3</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 4" type="jack-audio" exclusive="off">
+   <plug>input4</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 5" type="jack-audio" exclusive="off">
+   <plug>input5</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 6" type="jack-audio" exclusive="off">
+   <plug>input6</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 7" type="jack-audio" exclusive="off">
+   <plug>input7</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 8" type="jack-audio" exclusive="off">
+   <plug>input8</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 9" type="jack-audio" exclusive="off">
+   <plug>input9</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 10" type="jack-audio" exclusive="off">
+   <plug>input10</plug>
+  </socket>
+  <socket client="pure_data_0" name="pure_data_ 11" type="jack-audio" exclusive="off">
+   <plug>input11</plug>
+  </socket>
+  <socket client="system" name="system 1" type="jack-audio" exclusive="off">
+   <plug>playback_1</plug>
+   <plug>playback_2</plug>
+  </socket>
+ </input-sockets>
+ <slots/>
+ <cables>
+  <cable type="jack-audio" output="output\(dot\)jack 1" input="pure_data_ 1"/>
+  <cable type="jack-audio" output="output\(dot\)jack\(dot\) 1" input="pure_data_ 2"/>
+  <cable type="jack-audio" output="output\(dot\)jack\(dot\) 2" input="pure_data_ 13"/>
+  <cable type="jack-audio" output="output\(dot\)jack\(dot\) 3" input="pure_data_ 3"/>
+  <cable type="jack-audio" output="output\(dot\)jack\(dot\) 4" input="pure_data_ 4"/>
+  <cable type="jack-audio" output="output\(dot\)jack\(dot\) 5" input="pure_data_ 5"/>
+  <cable type="jack-audio" output="output\(dot\)jack\(dot\) 6" input="pure_data_ 6"/>
+  <cable type="jack-audio" output="output\(dot\)jack\(dot\) 7" input="pure_data_ 7"/>
+  <cable type="jack-audio" output="output\(dot\)jack\(dot\) 8" input="pure_data_ 8"/>
+  <cable type="jack-audio" output="output\(dot\)jack\(dot\) 9" input="pure_data_ 9"/>
+  <cable type="jack-audio" output="output\(dot\)jack\(dot\) 10" input="pure_data_ 10"/>
+  <cable type="jack-audio" output="output\(dot\)jack\(dot\) 11" input="pure_data_ 11"/>
+  <cable type="jack-audio" output="pure_data_ 1" input="system 1"/>
+ </cables>
+</patchbay>
+
