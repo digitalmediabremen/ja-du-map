@@ -25,3 +25,5 @@ ufw allow 2319
 ufw allow 2320
 ufw allow 2321
 ufw allow 2322
+
+ufw allow 8099

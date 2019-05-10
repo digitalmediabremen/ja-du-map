@@ -6,8 +6,6 @@
 
     <title>Lauschangriff</title>
 
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="images/favicon.png" />
     <style type="text/css">
 
       body {
@@ -15,9 +13,9 @@
         color: white;
         font-family: monospace;
       }
-      pre, audio {
+      /*pre, audio {
         display: inline-block;
-      }
+      }*/
       
     </style>
   </head>
@@ -29,13 +27,64 @@
     <hr/>
 
     <h4>OUT</h4>
-    <pre>RA</pre> <audio src="http://stream.radioangrezi.de:8000/live" controls></audio><br/>
-    <pre>RW</pre> <audio src="http://radiocast-radiowesertv.video-stream-hosting.de:8000/rwtvhb" controls></audio><br/>
+
+    <div id="out_container">
+      <pre>RA</pre> <audio src="http://stream.radioangrezi.de:8000/live" controls></audio><br/>
+      <pre>RW</pre> <audio src="http://radiocast-radiowesertv.video-stream-hosting.de:8000/rwtvhb" controls></audio><br/>
+    </div>
 
     <hr/>
 
     <h4>IN</h4>
-    <pre>00</pre> <audio src="http://stream.radioangrezi.de:8000/lausch0" controls></audio><br/>
+
+    <pre id="in_status" style="color:red"></pre>
+    <div id="in_container"></div>
+
+    <script type="text/javascript">
+
+    // 2310 -> 10
+    FIRST_PORT = 0
+    LAST_PORT = 11
+      
+    var request_status = document.getElementById('in_status');
+    var request = new XMLHttpRequest();
+     
+    request.onreadystatechange = function() {
+      if(request.readyState === 4) {
+        if(request.status === 200) { 
+          request_status.innerHTML = ''
+          stati = request.responseText.split(/\n/g);
+          for (i = FIRST_PORT; i <= LAST_PORT; i++) {
+            var channel_status = document.getElementById('in_status_' + i);
+            channel_status.innerHTML = stati[i - FIRST_PORT]
+          }  
+        } else {
+          request_status.innerHTML = 'An error occurred during your request: ' +  request.status + ' ' + request.statusText;
+        } 
+      }
+    }
+
+    function update_all_channel_stati(){
+     
+      request.open('Get', 'http://localhost:8099/');
+      request.send();
+
+    }
+
+    var in_container = document.getElementById('in_container');
+
+    for (i = FIRST_PORT; i <= LAST_PORT; i++) {
+        in_container.innerHTML += '<pre id="in_status_' + i + '"">' + i + '</pre>'
+        in_container.innerHTML += '<audio src="http://stream.radioangrezi.de:8000/lausch' + i + '" controls></audio><br/>'
+    }
+
+    // start refresh timer
+    var intervalID = window.setInterval(update_all_channel_stati, 5000); // millieconds
+
+    </script>
+    
+
+<!--     <pre>00</pre> <audio src="http://stream.radioangrezi.de:8000/lausch0" controls></audio><br/>
     <pre>01</pre> <audio src="http://stream.radioangrezi.de:8000/lausch1" controls></audio><br/>
     <pre>02</pre> <audio src="http://stream.radioangrezi.de:8000/lausch2" controls></audio><br/>
     <pre>03</pre> <audio src="http://stream.radioangrezi.de:8000/lausch3" controls></audio><br/>
@@ -46,7 +95,8 @@
     <pre>08</pre> <audio src="http://stream.radioangrezi.de:8000/lausch8" controls></audio><br/>
     <pre>09</pre> <audio src="http://stream.radioangrezi.de:8000/lausch9" controls></audio><br/>
     <pre>10</pre> <audio src="http://stream.radioangrezi.de:8000/lausch10" controls></audio><br/>
-    <pre>11</pre> <audio src="http://stream.radioangrezi.de:8000/lausch11" controls></audio><br/>
+    <pre>11</pre> <audio src="http://stream.radioangrezi.de:8000/lausch11" controls></audio><br/> -->
+
 
   </body>
 </html>

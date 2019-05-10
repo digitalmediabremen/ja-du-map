@@ -11,7 +11,7 @@ import get_liquidsoap_status
 def output_status(func):
 	for i in range(FIRST_PORT,LAST_PORT + 1):
 		status = get_liquidsoap_status.get_status(2300 + i)
-		func("Harbor %i (80%i / 23%i): %s\n" % (i,i,i, status))
+		func("Harbor %i (80%i / 23%i / lausch%i): %s\n" % (i,i,i,i-10, status))
 
 def output_to_stdout(text):
 	print(text),
@@ -20,6 +20,7 @@ class S(BaseHTTPRequestHandler):
     def _set_headers(self):
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
 
     def do_GET(self):
