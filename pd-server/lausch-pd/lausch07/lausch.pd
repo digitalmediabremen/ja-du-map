@@ -534,29 +534,29 @@ only amp01...;
 #X connect 169 0 168 0;
 #X restore 296 887 pd SineAmps;
 #X obj 123 1299 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1146 1;
+-1 -1 110 1;
 #X obj 262 1296 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1992 1;
+-1 -1 464 1;
 #X obj 409 1297 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 969 1;
 #X obj 559 1298 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4124 1;
+-1 -1 1760 1;
 #X obj 724 1299 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5329 1;
+-1 -1 12700 1;
 #X obj 877 1296 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6840 1;
+-1 -1 3802 1;
 #X obj 106 1683 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 8257 1;
+-1 -1 4973 1;
 #X obj 245 1680 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9740 1;
+-1 -1 6258 1;
 #X obj 402 1681 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 11487 1;
+-1 -1 7844 1;
 #X obj 552 1682 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12142 1;
+-1 -1 9525 1;
 #X obj 717 1683 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 10600 1;
+-1 -1 11047 1;
 #X obj 880 1690 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9089 1;
+-1 -1 12594 1;
 #N canvas 758 446 450 300 tests 0;
 #X obj 30 111 *~ 0.1;
 #X obj 26 153 dac~;
@@ -570,7 +570,7 @@ only amp01...;
 #N canvas 123 162 1213 876 twoChannel 1;
 #X obj 0 27 cnv 15 355 395 empty empty empty 20 12 0 14 -233017 -66577
 0;
-#X obj 594 267 cnv 15 380 237 empty empty empty 20 12 0 14 -233017
+#X obj 594 267 cnv 15 396 288 empty empty empty 20 12 0 14 -233017
 -66577 0;
 #X obj 462 200 ==;
 #X obj 463 250 sel 1;
@@ -651,43 +651,43 @@ the right;
 #X obj 489 786 s 2ChAmp10;
 #X obj 489 856 s 2ChAmp11;
 #X obj 489 926 s 2ChAmp12;
-#X obj 749 545 sel 0 1 2 3 4 5 6 7 8 9 10 11;
-#X obj 745 564 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 749 565 sel 0 1 2 3 4 5 6 7 8 9 10 11;
+#X obj 745 584 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 755 574 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 755 594 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 765 584 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 765 604 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 775 594 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 775 614 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 785 604 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 785 624 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 795 614 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 795 634 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 805 624 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 805 644 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 815 634 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 815 654 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 825 644 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 825 664 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 835 654 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 835 674 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 845 664 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 845 684 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 855 674 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 855 694 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 611 649 s 2ChAmp01;
-#X obj 611 719 s 2ChAmp02;
-#X obj 612 789 s 2ChAmp03;
-#X obj 691 679 s 2ChAmp04;
-#X obj 691 749 s 2ChAmp05;
-#X obj 690 819 s 2ChAmp06;
-#X obj 771 719 s 2ChAmp07;
-#X obj 771 789 s 2ChAmp08;
-#X obj 771 859 s 2ChAmp09;
-#X obj 851 749 s 2ChAmp10;
-#X obj 851 819 s 2ChAmp11;
-#X obj 853 887 s 2ChAmp12;
+#X obj 611 669 s 2ChAmp01;
+#X obj 611 739 s 2ChAmp02;
+#X obj 612 809 s 2ChAmp03;
+#X obj 691 699 s 2ChAmp04;
+#X obj 691 769 s 2ChAmp05;
+#X obj 690 839 s 2ChAmp06;
+#X obj 771 739 s 2ChAmp07;
+#X obj 771 809 s 2ChAmp08;
+#X obj 771 879 s 2ChAmp09;
+#X obj 851 769 s 2ChAmp10;
+#X obj 851 839 s 2ChAmp11;
+#X obj 853 907 s 2ChAmp12;
 #X text 688 24 TODO: maybe sink back to 0 and shift two others up constantly?
 ;
 #X obj 93 217 i;
@@ -782,18 +782,18 @@ the right;
 ;
 #X text 622 270 checks whether port is available. if it is not available
 \, the next channel will be tried;
-#X msg 611 607 1;
-#X msg 611 677 1;
-#X msg 611 747 1;
-#X msg 691 637 1;
-#X msg 691 707 1;
-#X msg 691 777 1;
-#X msg 771 677 1;
-#X msg 771 817 1;
-#X msg 851 707 1;
-#X msg 851 777 1;
-#X msg 851 847 1;
-#X text 985 270 TODO: Absturzverhinderung \, wenn alle Kanäle tot!
+#X msg 611 647 1;
+#X msg 611 717 1;
+#X msg 611 787 1;
+#X msg 691 677 1;
+#X msg 691 747 1;
+#X msg 691 817 1;
+#X msg 771 717 1;
+#X msg 771 857 1;
+#X msg 851 747 1;
+#X msg 851 817 1;
+#X msg 851 887 1;
+#X text 857 235 TODO: Absturzverhinderung \, wenn alle Kanäle tot!
 ;
 #X obj 612 314 t f f;
 #X obj 661 336 tabread array1;
@@ -820,7 +820,7 @@ the right;
 #X floatatom 910 340 5 0 0 0 - - -, f 5;
 #X floatatom 671 532 5 0 0 0 - - -, f 5;
 #X floatatom 628 436 5 0 0 0 - - -, f 5;
-#X msg 771 747 1;
+#X msg 771 787 1;
 #X connect 2 0 3 0;
 #X connect 2 0 7 0;
 #X connect 3 0 8 0;
@@ -1487,7 +1487,7 @@ be checked beforehand!;
 #X obj 523 736 shell;
 #X obj 523 758 print;
 #X msg 572 703 0;
-#N canvas 47 24 1873 1033 checkState 0;
+#N canvas 47 52 937 1005 checkState 1;
 #X obj 552 106 int;
 #X obj 588 109 + 1;
 #X floatatom 552 128 5 0 0 0 - - -, f 5;
@@ -1495,8 +1495,8 @@ be checked beforehand!;
 #X floatatom 552 171 5 0 0 0 - - -, f 5;
 #X floatatom 130 299 5 0 0 0 - - -, f 5;
 #X obj 97 324 spigot;
-#X obj 1042 159 shell;
-#X obj 1042 187 print;
+#X obj 811 170 shell;
+#X obj 811 198 print;
 #X obj 555 71 t b b;
 #X obj 552 18 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -1565,7 +1565,7 @@ be checked beforehand!;
 #X obj 776 884 spigot;
 #X obj 776 906 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 727 816 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 709 842 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X floatatom 348 1030 5 0 0 0 - - -, f 5;
 #X obj 315 1055 spigot;
@@ -1657,7 +1657,7 @@ be checked beforehand!;
 2321;
 #X obj 644 14 inlet;
 #X obj 552 38 metro;
-#X obj 1138 250 tabwrite array1;
+#X obj 685 138 tabwrite array1;
 #X connect 0 0 1 0;
 #X connect 0 0 2 0;
 #X connect 1 0 0 1;
@@ -1724,7 +1724,6 @@ be checked beforehand!;
 #X connect 14 0 12 0;
 #X connect 15 0 16 0;
 #X connect 15 0 132 0;
-#X connect 17 0 132 0;
 #X connect 18 0 19 1;
 #X connect 19 0 24 0;
 #X connect 19 0 7 0;
@@ -1733,7 +1732,6 @@ be checked beforehand!;
 #X connect 22 0 23 0;
 #X connect 23 0 89 0;
 #X connect 23 0 132 0;
-#X connect 24 0 132 0;
 #X connect 25 0 26 1;
 #X connect 26 0 30 0;
 #X connect 26 0 7 0;
@@ -1741,7 +1739,6 @@ be checked beforehand!;
 #X connect 28 0 29 0;
 #X connect 29 0 92 0;
 #X connect 29 0 132 0;
-#X connect 30 0 132 0;
 #X connect 31 0 32 1;
 #X connect 32 0 36 0;
 #X connect 32 0 7 0;
@@ -1749,7 +1746,6 @@ be checked beforehand!;
 #X connect 34 0 35 0;
 #X connect 35 0 95 0;
 #X connect 35 0 132 0;
-#X connect 36 0 132 0;
 #X connect 37 0 38 1;
 #X connect 38 0 42 0;
 #X connect 38 0 7 0;
@@ -1757,7 +1753,6 @@ be checked beforehand!;
 #X connect 40 0 41 0;
 #X connect 41 0 98 0;
 #X connect 41 0 132 0;
-#X connect 42 0 132 0;
 #X connect 43 0 44 1;
 #X connect 44 0 48 0;
 #X connect 44 0 7 0;
@@ -1765,7 +1760,6 @@ be checked beforehand!;
 #X connect 46 0 47 0;
 #X connect 47 0 110 0;
 #X connect 47 0 132 0;
-#X connect 48 0 132 0;
 #X connect 49 0 50 1;
 #X connect 50 0 54 0;
 #X connect 50 0 7 0;
@@ -1773,7 +1767,6 @@ be checked beforehand!;
 #X connect 52 0 53 0;
 #X connect 53 0 113 0;
 #X connect 53 0 132 0;
-#X connect 54 0 132 0;
 #X connect 55 0 56 1;
 #X connect 56 0 60 0;
 #X connect 56 0 7 0;
@@ -1781,7 +1774,6 @@ be checked beforehand!;
 #X connect 58 0 59 0;
 #X connect 59 0 116 0;
 #X connect 59 0 132 0;
-#X connect 60 0 132 0;
 #X connect 61 0 62 1;
 #X connect 62 0 66 0;
 #X connect 62 0 7 0;
@@ -1789,7 +1781,6 @@ be checked beforehand!;
 #X connect 64 0 65 0;
 #X connect 65 0 103 0;
 #X connect 65 0 132 0;
-#X connect 66 0 132 0;
 #X connect 67 0 68 1;
 #X connect 68 0 72 0;
 #X connect 68 0 7 0;
@@ -1797,7 +1788,6 @@ be checked beforehand!;
 #X connect 70 0 71 0;
 #X connect 71 0 106 0;
 #X connect 71 0 132 0;
-#X connect 72 0 132 0;
 #X connect 73 0 74 1;
 #X connect 74 0 78 0;
 #X connect 74 0 7 0;
@@ -1805,7 +1795,6 @@ be checked beforehand!;
 #X connect 76 0 77 0;
 #X connect 77 0 109 0;
 #X connect 77 0 132 0;
-#X connect 78 0 132 0;
 #X connect 79 0 80 1;
 #X connect 80 0 84 0;
 #X connect 80 0 7 0;
@@ -1813,7 +1802,6 @@ be checked beforehand!;
 #X connect 82 0 83 0;
 #X connect 83 0 119 0;
 #X connect 83 0 132 0;
-#X connect 84 0 132 0;
 #X connect 85 0 6 0;
 #X connect 86 0 26 0;
 #X connect 87 0 18 0;
@@ -1884,8 +1872,8 @@ of x ms;
 #X obj 210 352 - 100;
 #X floatatom 158 374 5 0 0 0 - - -, f 5;
 #N canvas 0 0 450 300 (subpatch) 0;
-#X array array1 12 float 2 black black;
-#X coords 0 1 12 -1 200 140 1;
+#X array array1 7 float 2 black black;
+#X coords 0 1 7 -1 200 140 1;
 #X restore 689 117 graph;
 #X connect 2 0 192 0;
 #X connect 3 0 2 0;
