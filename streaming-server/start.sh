@@ -1,13 +1,1 @@
-liquidsoap harbor-8010.cfg &
-liquidsoap harbor-8011.cfg &
-liquidsoap harbor-8012.cfg &
-liquidsoap harbor-8013.cfg &
-liquidsoap harbor-8014.cfg &
-liquidsoap harbor-8015.cfg &
-liquidsoap harbor-8016.cfg &
-liquidsoap harbor-8017.cfg &
-liquidsoap harbor-8018.cfg &
-liquidsoap harbor-8019.cfg &
-liquidsoap harbor-8020.cfg &
-liquidsoap harbor-8021.cfg &
-liquidsoap harbor-8022.cfg &
+./restart.sh 8010 8011 8012 8013 8014 8015 8016 8017 8018 8019 8020 8021
