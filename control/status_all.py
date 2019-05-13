@@ -4,7 +4,7 @@ import os
 
 # 2310 -> 10
 FIRST_PORT = 10
-LAST_PORT = 21
+LAST_PORT = 30
 
 import get_liquidsoap_status
 
