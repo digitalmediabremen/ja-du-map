@@ -57,7 +57,7 @@ function draw() {
   text(dist4.mag(), width, 50);
   text(dist5.mag(), width, 60);
   //-------------------------- draw ellipse with easing:
-  easing = 0.03;
+  easing = 0.01;
   dx = targetX - x;
   x += dx * easing;
   dy = targetY - y;
