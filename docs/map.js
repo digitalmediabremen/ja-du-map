@@ -2,7 +2,7 @@ let img;
 var targetX, targetY, x, y;
 
 function preload() {
-  img = loadImage("demo.png");
+  img = loadImage("RP_Bremen-01.png");
 }
 
 function setup() {
