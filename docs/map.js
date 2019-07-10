@@ -1,21 +1,21 @@
 let img;
-let targetX = 0;
-let targetY = 0;
+var targetX, targetY, x, y;
 
-function preload(){
+function preload() {
   img = loadImage("demo.png");
 }
 
-function setup(){
+function setup() {
   var canvas = createCanvas(img.width, img.height);
   canvas.parent('sketch-holder');
   x = random(img.width);
   y = random(img.height);
-  let mouse;
-   print(x,y);
+  targetX = x;
+  targetY = y;
+  print(x, y);
 }
 
-function draw(){
+function draw() {
   var v1 = createVector(130, 206);
   var v2 = createVector(235, 308);
   var v3 = createVector(240, 164);
@@ -24,7 +24,7 @@ function draw(){
   background(255);
   image(img, 0, 0);
   //-------------------------- hardcoded vectors for mic positions
-  let mouse = createVector(x,y);
+  let mouse = createVector(x, y);
   // let dist1 = createVector();
   // let dist2 = createVector();
   // let dist3 = createVector();
@@ -32,20 +32,23 @@ function draw(){
   // let dist5 = createVector();
   textAlign(RIGHT, BOTTOM);
   fill(255);
-  text(mouseX+","+ mouseY, width, height);
+  text(mouseX + "," + mouseY, width, height);
 
   // ------------------------- move token with mouse
-  if (mouseIsPressed){
-    targetX = min(width, mouseX);
-    targetY = min(height, mouseY);
-  // print(x, y);
-  mouse.set(x,y);
+  if (mouseIsPressed) {
+    if (mouseX <= width && mouseX >=0 && mouseY >=0 && mouseY <= height){
+      targetX = mouseX;
+      targetY = mouseY;
   }
-let  dist1 = v1.sub(mouse);
-let  dist2 = v2.sub(mouse);
-let  dist3 = v3.sub(mouse);
-let  dist4 = v4.sub(mouse);
-let  dist5 = v5.sub(mouse);
+    // print(x, y);
+    mouse.set(x, y);
+  }
+  // ------------------------- display magnitudes and volumes
+  let dist1 = v1.sub(mouse);
+  let dist2 = v2.sub(mouse);
+  let dist3 = v3.sub(mouse);
+  let dist4 = v4.sub(mouse);
+  let dist5 = v5.sub(mouse);
   // text(mouse.mag(), width, 10);
   text(dist1.mag(), width, 20);
   text(dist2.mag(), width, 30);
