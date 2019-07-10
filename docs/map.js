@@ -69,6 +69,11 @@ function draw() {
   vol3 = max(0, 1 - dist3.mag() / 400);
   vol4 = max(0, 1 - dist4.mag() / 400);
   vol5 = max(0, 1 - dist5.mag() / 400);
+
+  if(window.players){
+    window.players[1].setVolume(vol1)
+  }
+
   // print("vol1 = " + vol1);
   text("vol1 = " + vol1, width, 90);
   text("vol2 = " + vol2, width, 100);

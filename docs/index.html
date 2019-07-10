@@ -31,29 +31,41 @@
       /* align-items: center; */
     }
   </style>
-  <script class="code">
-    function init() {
-      var audio,
-        player,
-        url = "audio.mpd";
-      audio = document.querySelector("audio");
-      player = dashjs.MediaPlayer().create();
-      player.initialize(audio, url, true);
-      document.querySelector("#volume-c01").addEventListener("change", function(e) {
-        volume = parseFloat(e.target.value);
-        console.log("Volume Value: " + volume);
-        player.setVolume(volume);
-      })
-    }
+  <script>
+      function initDashAudioPlayer(elem, url) {
+          var audio,
+              player;
+
+          player = dashjs.MediaPlayer().create();
+          player.initialize(elem, url, true);
+
+          // document.querySelector("#volume-c01").addEventListener("change", function (e) {
+          //     volume = parseFloat(e.target.value);
+          //     console.log("Volume Value: " + volume);
+          //     player.setVolume(volume);
+          // })
+          return player;
+      }
+
+      function init() {
+          window.players = []
+          window.players[1] = initDashAudioPlayer(document.querySelector("#audio-c01"), "audio.mpd")
+          window.players[2] = initDashAudioPlayer(document.querySelector("#audio-c02"), "audio.mpd")
+          window.players[3] = initDashAudioPlayer(document.querySelector("#audio-c03"), "audio.mpd")
+          window.players[4] = initDashAudioPlayer(document.querySelector("#audio-c04"), "audio.mpd")
+          window.players[5] = initDashAudioPlayer(document.querySelector("#audio-c05"), "audio.mpd")
+      }
   </script>
 </head>
 <body bgcolor=grey>
   <div id="sketch-holder">
   </div>
   <div>
-    <audio></audio>
-    <input type="range" id="volume-c01" name="volume" min="0" max="1" step="0.01">
-    <label for="volume">Volume</label>
+    <audio id="audio-c01"></audio>
+<!--     <audio id="audio-c02"></audio>
+    <audio id="audio-c03"></audio>
+    <audio id="audio-c04"></audio>
+    <audio id="audio-c05"></audio> -->
   </div>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
