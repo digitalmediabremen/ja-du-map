@@ -7,7 +7,8 @@ function preload(){
 }
 
 function setup(){
-  createCanvas(img.width, img.height);
+  var canvas = createCanvas(img.width, img.height);
+  canvas.parent('sketch-holder');
   x = random(img.width);
   y = random(img.height);
   let mouse;
@@ -15,15 +16,15 @@ function setup(){
 }
 
 function draw(){
+  var v1 = createVector(130, 206);
+  var v2 = createVector(235, 308);
+  var v3 = createVector(240, 164);
+  var v4 = createVector(385, 180);
+  var v5 = createVector(475, 333);
   background(255);
   image(img, 0, 0);
   //-------------------------- hardcoded vectors for mic positions
   let mouse = createVector(x,y);
-  let v1 = createVector(130, 206);
-  let v2 = createVector(235, 308);
-  let v3 = createVector(240, 164);
-  let v4 = createVector(385, 180);
-  let v5 = createVector(475, 333);
   // let dist1 = createVector();
   // let dist2 = createVector();
   // let dist3 = createVector();
@@ -35,8 +36,8 @@ function draw(){
 
   // ------------------------- move token with mouse
   if (mouseIsPressed){
-    targetX = mouseX;
-    targetY = mouseY;
+    targetX = min(width, mouseX);
+    targetY = min(height, mouseY);
   // print(x, y);
   mouse.set(x,y);
   }
