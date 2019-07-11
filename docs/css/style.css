@@ -1,0 +1,77 @@
+html,
+body {
+  height: 100%;
+  background: black;
+  font-family: 'Sequel 100 Wide 45';
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  display: flex;
+
+  /* This centers our sketch horizontally. */
+  justify-content: center;
+
+  /* This centers our sketch vertically. */
+  /* align-items: center; */
+}
+#sketch {
+  cursor: pointer;
+  position: absolute;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+} 
+
+.popup {
+  z-index: 100;
+  background: white;
+  width: 35%;
+  min-width: 300px;
+  /*height: 300px;*/
+  margin: auto auto;
+  padding: 4em;
+}
+
+.popup h1, .popup h2 {
+  margin-top: 0;
+}
+
+button, .button {
+  background: white;
+  border: 2px solid black;
+  padding: 1em 2em;
+  margin-right: 1em;
+  cursor: pointer;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+}
+
+button:hover, .button:hover {
+  background: black;
+  border: 2px solid white;
+  color: white;
+  cursor: pointer; /* TODO: Does not work! */;
+}
+
+.bottom-ui {
+  z-index: 2;
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  display: none;
+  height: 65px;
+}
+
+.spacetime{
+  background: black;
+  color: white;
+  display: inline-block;
+  padding: 0 2em;
+  height: 100%;
+  /*width: 320px;*/
+  /*text-align: left;*/
+}

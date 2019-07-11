@@ -6,37 +6,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js">
   </script>
   <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+  <script src="js/moment.min.js"></script>
   <script src="map.js"></script>
   <script src="dash.all.debug.js"></script>
   <!-- <script src="dash.js"></script> -->
-  <style>
-    html {
-      cursor: pointer;
-    }
-
-    html,
-    body {
-      height: 100%;
-    }
-
-    body {
-      margin: 0;
-      display: flex;
-
-      /* This centers our sketch horizontally. */
-      justify-content: center;
-
-      /* This centers our sketch vertically. */
-      /* align-items: center; */
-    }
-  </style>
+  <link href="css/style.css" rel="stylesheet"/>
+  <link href="fonts/stylesheet.css" rel="stylesheet">
   <script>
+      let map_p5 = new p5(map_sketch, 'sketch');
+
       function initDashAudioPlayer(elem, url) {
           var audio,
               player;
 
           player = dashjs.MediaPlayer().create();
-          player.initialize(elem, url, true);
+          //player.setAutoPlay(false);
+          player.initialize(elem, url, false);
 
           // document.querySelector("#volume-c01").addEventListener("change", function (e) {
           //     volume = parseFloat(e.target.value);
@@ -54,11 +39,38 @@
           window.players[4] = initDashAudioPlayer(document.querySelector("#audio-c04"), "audio.mpd")
           window.players[5] = initDashAudioPlayer(document.querySelector("#audio-c05"), "audio.mpd")
       }
+
+      function startToListen(e){
+          document.querySelector("#intro").style.display = "none";
+          document.querySelector(".bottom-ui").style.display = "block";
+          map_p5.frameRate(60); // start
+
+          for (var i = 1; i < window.players.length; i++) {
+            if (!window.players[i]) {continue;}
+            window.players[i].play();
+          }
+      }
   </script>
 </head>
-<body bgcolor=grey>
-  <div id="sketch-holder">
+<body>
+
+  <div class="popup" id="intro">
+    <h1>Radiophonic Places <i>Bremen</i></h1>
+    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
+    <a class="button" href="javascript:startToListen()">listen</a><a class="button" href="description.html">read</a>
+
   </div>
+
+  <div class="bottom-ui">
+    <a class="button" href="description.html">read</a>
+    <div class="spacetime"><p>Bremen, <span id="time">05:00:00</span></p></div>
+  </div>
+
+  <div id="sketch">
+
+  </div>
+
   <div>
     <audio id="audio-c01"></audio>
 <!--     <audio id="audio-c02"></audio>
@@ -66,17 +78,13 @@
     <audio id="audio-c04"></audio>
     <audio id="audio-c05"></audio> -->
   </div>
+
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       init();
     });
   </script>
-  <!-- <div>
-    <video id="videoPlayer"></video>
-  </div> -->
-  <!-- <div>
-    <video data-dashjs-player autoplay src="https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd" controls></video>
-  </div> -->
+
 </body>
 
 </html>

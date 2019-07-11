@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Sequel 100 Wide 55';
+    src: url('Sequel100Wide-55.woff2') format('woff2'),
+        url('Sequel100Wide-55.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sequel 100 Wide 45';
+    src: url('Sequel100Wide-45.woff2') format('woff2'),
+        url('Sequel100Wide-45.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+

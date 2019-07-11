@@ -1,84 +1,146 @@
-let img;
-var targetX, targetY, x, y;
+const map_sketch = function(p) {
+  let debug_info = true;
+  var targetX, targetY, x, y;
+  let ratio = 1;
+  let img,       //image 
+      imgResized,//resized image of the image (visible)
+      imageRatio;//ratio of the image h/w
+  var positions = [];
+  const dropoff_distance = 400; // in pixel (TODO in ratio to screen size?)
 
-function preload() {
-  // img = loadImage("demo.png");
-  img = loadImage("RP_Bremen-01_1280px.png");
-}
+  var audio_beginning = new Date('2019-05-13T05:00:00');
+  var now;
+  //var audio_beginning = (5 * 60 * 60 + 0 * 60 + 0) * 1000 // in millis since 00:00:00
 
-function setup() {
-  var canvas = createCanvas(img.width, img.height);
-  canvas.parent('sketch-holder');
-  x = random(img.width);
-  y = random(img.height);
-  targetX = x;
-  targetY = y;
-  print(x, y);
-}
-
-function draw() {
-  var v1 = createVector(130, 206);
-  var v2 = createVector(235, 308);
-  var v3 = createVector(240, 164);
-  var v4 = createVector(385, 180);
-  var v5 = createVector(475, 333);
-  background(255);
-  image(img, 0, 0);
-  //-------------------------- hardcoded vectors for mic positions
-  let mouse = createVector(x, y);
-  // let dist1 = createVector();
-  // let dist2 = createVector();
-  // let dist3 = createVector();
-  // let dist4 = createVector();
-  // let dist5 = createVector();
-  textAlign(RIGHT, BOTTOM);
-  fill(255);
-  text(mouseX + "," + mouseY, width, height);
-
-  // ------------------------- move token with mouse
-  if (mouseIsPressed) {
-    if (mouseX <= width && mouseX >=0 && mouseY >=0 && mouseY <= height){
-      targetX = mouseX;
-      targetY = mouseY;
-  }
-    // print(x, y);
-    mouse.set(x, y);
-  }
-  // ------------------------- display magnitudes and volumes
-  let dist1 = v1.sub(mouse);
-  let dist2 = v2.sub(mouse);
-  let dist3 = v3.sub(mouse);
-  let dist4 = v4.sub(mouse);
-  let dist5 = v5.sub(mouse);
-  // text(mouse.mag(), width, 10);
-  text(dist1.mag(), width, 20);
-  text(dist2.mag(), width, 30);
-  text(dist3.mag(), width, 40);
-  text(dist4.mag(), width, 50);
-  text(dist5.mag(), width, 60);
-  //-------------------------- draw ellipse with easing:
-  easing = 0.01;
-  dx = targetX - x;
-  x += dx * easing;
-  dy = targetY - y;
-  y += dy * easing;
-  ellipse(x, y, 50, 50);
-
-  //-------------------------- calculate Volume
-  vol1 = max(0, 1 - dist1.mag() / 400); // willkürliche Distanz für vol=0: 400px
-  vol2 = max(0, 1 - dist2.mag() / 400);
-  vol3 = max(0, 1 - dist3.mag() / 400);
-  vol4 = max(0, 1 - dist4.mag() / 400);
-  vol5 = max(0, 1 - dist5.mag() / 400);
-
-  if(window.players){
-    window.players[1].setVolume(vol1)
+  p.preload = function () {
+    img = p.loadImage("RP_Bremen-01.png", img => imgResized = img.get());
   }
 
-  // print("vol1 = " + vol1);
-  text("vol1 = " + vol1, width, 90);
-  text("vol2 = " + vol2, width, 100);
-  text("vol3 = " + vol3, width, 110);
-  text("vol4 = " + vol4, width, 120);
-  text("vol5 = " + vol5, width, 130);
-}
+  p.setup = function () {
+    p.createCanvas(p.windowWidth, p.windowHeight);
+
+    imgRatio = img.width/img.height;
+    x = p.random(p.windowWidth);
+    y = p.random(p.windowHeight);
+
+    targetX = x;
+    targetY = y;
+
+    p.print(x, y);
+    p.windowResized();
+
+    p.background(0);
+    p.image(imgResized,0,0);
+
+    p.frameRate(0);
+  }
+
+  p.windowResized  = function () {
+    p.resizeCanvas(p.windowWidth, p.windowHeight);
+    p.print("resizing to: " + p.windowWidth + " " + p.windowHeight);
+    if (p.windowWidth < img.width){
+        imgResized = img.get();
+        imgResized.resize(p.windowWidth,0);
+        ratio = p.windowWidth/img.width;
+    }
+    if (p.windowHeight > imgResized.height){
+        imgResized = img.get();
+        imgResized.resize(0,p.windowHeight);
+        ratio = p.windowHeight/img.height;
+    }
+    console.debug("ratio:" + ratio)
+
+    // positions in original image coordinates
+
+     positions[1] = p.createVector(2309, 1816);
+     positions[2] = p.createVector(2560, 2113);
+     positions[3] = p.createVector(2523, 854);
+     positions[4] = p.createVector(1335, 574);
+     positions[5] = p.createVector(3123, 1862);
+     positions[6] = p.createVector(2721, 1942);
+     positions[7] = p.createVector(2099, 2041);
+     positions[8] = p.createVector(2523, 2364);
+     positions[9] = p.createVector(3559, 1731);
+    positions[10] = p.createVector(4260, 2113);
+
+    for (var i = 1; i < positions.length; i++) {
+        if (!positions[i]) {continue;}
+        positions[i].mult(ratio);
+      }
+  }
+
+  p.draw = function () {
+
+    p.background(0);
+    p.image(imgResized,0,0);
+
+    //update ui time
+    now = moment(audio_beginning).add(p.millis(), 'milliseconds');
+    window.document.querySelector("#time").innerHTML = now.format("MMMM Do YYYY HH:mm:ss");
+
+    if(debug_info){
+      diameter = 10;
+      p.fill('red');
+      p.strokeWeight(1);
+        p.stroke('rgba(255,255,255,1)');
+      for (var i = 1; i < positions.length; i++) {
+        if (!positions[i]) {continue;}
+        p.circle(positions[i].x, positions[i].y, diameter);
+      }
+    }
+
+    //-------------------------- hardcoded vectors for mic positions
+    let mouse = p.createVector(x, y);
+
+    p.textAlign(p.RIGHT, p.BOTTOM);
+    p.fill(255);
+    if(debug_info)
+      p.text(p.mouseX + "," + p.mouseY, p.width, p.height);
+
+    // ------------------------- move token with mouse
+    if (p.mouseIsPressed) {
+      if (p.mouseX <= p.width && p.mouseX >=0 && p.mouseY >=0 && p.mouseY <= p.height){
+        targetX = p.mouseX;
+        targetY = p.mouseY;
+    }
+      // print(x, y);
+      mouse.set(x, y);
+    }
+    // ------------------------- display magnitudes and volumes
+    for (var i = 1; i < positions.length; i++) {
+      if (!positions[i]) {continue;}
+
+      let dist = positions[i].copy().sub(mouse);
+      if(debug_info)
+        p.text(dist.mag(), p.width, 10 + i * 10);
+
+
+      // willkürliche Distanz für vol=0: 400px (TODO: sollte relativ von der Bildschrimgröße sein?!)
+      vol = p.max(0, 1 - dist.mag() / dropoff_distance);
+      if(debug_info)
+        p.text("vol " + i + " = " + vol, p.width, 200 + 10 * i);
+
+      // set volume on media player
+      if(window.players){
+        try {
+          window.players[i].setVolume(vol)
+        } catch (e) {
+          console.warn("Could not set volume on player " + i + ": " + e);
+          positions[i] = null;
+          console.log("Player " + i + " disabled.")
+        }
+      }
+    }
+
+    //-------------------------- draw listener ellipse with easing:
+    easing = 0.01;
+    dx = targetX - x;
+    x += dx * easing;
+    dy = targetY - y;
+    y += dy * easing;
+    p.strokeWeight(15);
+    p.stroke('rgba(255,255,255,0.5)');
+    p.fill(0);
+    p.circle(x, y, 20);
+  }
+};
