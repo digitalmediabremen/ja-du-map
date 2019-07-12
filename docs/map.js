@@ -142,5 +142,9 @@ const map_sketch = function(p) {
     p.stroke('rgba(255,255,255,0.5)');
     p.fill(0);
     p.circle(x, y, 20);
-  }
+    // for (var i = 1; i < positions.length; i++) {
+    //     if (!positions[i]) {continue;}
+    //   p.line(positions[i].x, positions[i].y, x, y)
+    // }
+    }
 };

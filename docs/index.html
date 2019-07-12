@@ -41,6 +41,10 @@
       }
 
       function startToListen(e){
+          // prevent start before sketch is ready
+          if(!map_p5._setupDone){
+            return false;
+          }
           document.querySelector("#intro").style.display = "none";
           document.querySelector(".bottom-ui").style.display = "block";
           map_p5.frameRate(60); // start

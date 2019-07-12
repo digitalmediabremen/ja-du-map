@@ -5,18 +5,42 @@ body {
   font-family: 'Sequel 100 Wide 45';
   font-weight: 500;
   font-style: normal;
+  color: white;
+}
+
+html.page-positive, html.page-positive body {
+  background: white;
+  color: black;
 }
 
 body {
   margin: 0;
   display: flex;
-
-  /* This centers our sketch horizontally. */
   justify-content: center;
-
-  /* This centers our sketch vertically. */
-  /* align-items: center; */
 }
+
+.container {
+  padding: 4em;
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+.description {
+  width: 50%;
+}
+
+.images img {
+  width: 100%;
+}
+
+.images figcaption {
+  font-size: 0.6em;
+  margin-top: 1em;
+}
+
 #sketch {
   cursor: pointer;
   position: absolute;
@@ -33,10 +57,25 @@ body {
   /*height: 300px;*/
   margin: auto auto;
   padding: 4em;
+  color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1em;
+}
+
+a, a:visited, a:active, a:hover, a:link {
+  color: black;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .popup h1, .popup h2 {
   margin-top: 0;
+  text-transform: uppercase;
 }
 
 button, .button {
