@@ -129,7 +129,7 @@ const map_sketch = function(p) {
           window.players[id].setVolume(vol)
         } catch (e) {
           console.warn("Could not set volume on player " + id + ": " + e);
-          positions[i] = null;
+          positions[id] = null;
           console.log("Player " + id + " disabled.")
         }
       }
