@@ -1,12 +1,12 @@
 const map_sketch = function(p) {
-  let debug_info = true;
+  let debug_info = false;
   var targetX, targetY, x, y;
   let ratio = 1;
   let img,       //image 
       imgResized,//resized image of the image (visible)
       imageRatio;//ratio of the image h/w
   var positions = [];
-  const dropoff_distance = 400; // in pixel (TODO in ratio to screen size?)
+  let dropoff_distance = 400; // in pixel (in ratio to screen)
 
   var audio_beginning = new Date('2019-05-13T05:00:00');
   var now;
@@ -48,6 +48,7 @@ const map_sketch = function(p) {
         imgResized.resize(0,p.windowHeight);
         ratio = p.windowHeight/img.height;
     }
+    let dropoff_distance = 400 * ratio;
     console.debug("ratio:" + ratio)
 
     // positions in original image coordinates
@@ -115,7 +116,7 @@ const map_sketch = function(p) {
         p.text(dist.mag(), p.width, 10 + i * 10);
 
 
-      // willkürliche Distanz für vol=0: 400px (TODO: sollte relativ von der Bildschrimgröße sein?!)
+      // willkürliche Distanz für vol=0: 400px
       vol = p.max(0, 1 - dist.mag() / dropoff_distance);
       if(debug_info)
         p.text("vol " + i + " = " + vol, p.width, 200 + 10 * i);
@@ -138,10 +139,10 @@ const map_sketch = function(p) {
     x += dx * easing;
     dy = targetY - y;
     y += dy * easing;
-    p.strokeWeight(15);
-    p.stroke('rgba(255,255,255,0.5)');
-    p.fill(0);
-    p.circle(x, y, 20);
+    p.strokeWeight(dropoff_distance / 10);
+    p.stroke('rgba(255,255,255,0.8)');
+    p.fill('rgba(255,255,255,1)');
+    p.circle(x, y, 10);
     // for (var i = 1; i < positions.length; i++) {
     //     if (!positions[i]) {continue;}
     //   p.line(positions[i].x, positions[i].y, x, y)

@@ -65,7 +65,7 @@ body {
 .popup {
   z-index: 100;
   background: white;
-  width: 35%;
+  width: 40%;
   min-width: 300px;
   /* height: 300px; */
   margin: auto auto;
@@ -87,7 +87,7 @@ a:hover {
   text-decoration: none;
 }
 
-button, .button {
+button, .button, a.button {
   background: white;
   border: 2px solid black;
   padding: 1em 2em;
@@ -100,7 +100,7 @@ button, .button {
 
 button:hover, .button:hover {
   background: black;
-  border: 2px solid white;
+  border: 2px solid black;
   color: white;
   cursor: pointer; /* TODO: Does not work! */;
 }
