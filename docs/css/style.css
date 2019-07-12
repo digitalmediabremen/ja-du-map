@@ -67,7 +67,7 @@ body {
   background: white;
   width: 35%;
   min-width: 300px;
-  /*height: 300px;*/
+  /* height: 300px; */
   margin: auto auto;
   color: black;
 }
@@ -85,11 +85,6 @@ a, a:visited, a:active, a:hover, a:link {
 
 a:hover {
   text-decoration: none;
-}
-
-.popup h1, .popup h2 {
-  margin-top: 0;
-  text-transform: uppercase;
 }
 
 button, .button {
@@ -131,6 +126,7 @@ button:hover, .button:hover {
 
 .too-small {
   display: none;
+  text-decoration: underline;
 }
 
 @media (max-width: 750px) {
@@ -146,8 +142,10 @@ button:hover, .button:hover {
   }
 
   .popup {
-    height: 100%;
-    width: 100%;
+    margin: 0;
+    width: auto;
+    height: auto;
+    min-width: none;
   }
 
   .btn-listen {
@@ -156,6 +154,10 @@ button:hover, .button:hover {
 
   .too-small {
     display: block;
+  }
+
+  .instructions {
+    display: none;
   }
 
 }
