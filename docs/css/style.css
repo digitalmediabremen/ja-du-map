@@ -148,7 +148,7 @@ button:hover, .button:hover {
     min-width: none;
   }
 
-  .btn-listen {
+  a.btn-listen {
     display: none;
   }
 

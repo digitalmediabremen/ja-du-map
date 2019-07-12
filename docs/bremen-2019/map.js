@@ -5,7 +5,7 @@ const map_sketch = function(p) {
   let img,       //image 
       imgResized,//resized image of the image (visible)
       imageRatio;//ratio of the image h/w
-  var positions = [];
+  var positions = {}; // dict
   let dropoff_distance = 400; // in pixel (in ratio to screen)
 
   var audio_beginning = new Date('2019-05-13T05:00:00');
@@ -13,7 +13,7 @@ const map_sketch = function(p) {
   //var audio_beginning = (5 * 60 * 60 + 0 * 60 + 0) * 1000 // in millis since 00:00:00
 
   p.preload = function () {
-    img = p.loadImage("RP_Bremen-01.png", img => imgResized = img.get());
+    img = p.loadImage("bremen-2019-05-13.png", img => imgResized = img.get());
   }
 
   p.setup = function () {
@@ -51,22 +51,22 @@ const map_sketch = function(p) {
     let dropoff_distance = 400 * ratio;
     console.debug("ratio:" + ratio)
 
-    // positions in original image coordinates
+    // positions in original image coordinates (transfered form photoshop)
 
-     positions[1] = p.createVector(2309, 1816);
-     positions[2] = p.createVector(2560, 2113);
-     positions[3] = p.createVector(2523, 854);
-     positions[4] = p.createVector(1335, 574);
-     positions[5] = p.createVector(3123, 1862);
-     positions[6] = p.createVector(2721, 1942);
-     positions[7] = p.createVector(2099, 2041);
-     positions[8] = p.createVector(2523, 2364);
-     positions[9] = p.createVector(3559, 1731);
-    positions[10] = p.createVector(4260, 2113);
+    positions = {
+      8022: p.createVector(2309, 699),  // 8022
+      8010: p.createVector(2560, 2113), // 8010
+      8024: p.createVector(2523, 854),  // 8024
+      8026: p.createVector(1335, 574),  // 8026
+      8015: p.createVector(2721, 1942), // 8015
+      8018: p.createVector(2099, 2041), // 8018
+      8019: p.createVector(3559, 1731), // 8019
+      8014: p.createVector(4260, 2113), // 8014
+    }
 
-    for (var i = 1; i < positions.length; i++) {
-        if (!positions[i]) {continue;}
-        positions[i].mult(ratio);
+    for(var id in positions) {
+        if (!positions[id]) {continue;}
+        positions[id].mult(ratio);
       }
   }
 
@@ -83,10 +83,10 @@ const map_sketch = function(p) {
       diameter = 10;
       p.fill('red');
       p.strokeWeight(1);
-        p.stroke('rgba(255,255,255,1)');
-      for (var i = 1; i < positions.length; i++) {
-        if (!positions[i]) {continue;}
-        p.circle(positions[i].x, positions[i].y, diameter);
+      p.stroke('rgba(255,255,255,1)');
+      for(var id in positions) {
+        if (!positions[id]) {continue;}
+        p.circle(positions[id].x, positions[id].y, diameter);
       }
     }
 
@@ -108,10 +108,12 @@ const map_sketch = function(p) {
       mouse.set(x, y);
     }
     // ------------------------- display magnitudes and volumes
-    for (var i = 1; i < positions.length; i++) {
-      if (!positions[i]) {continue;}
+    var i = 0;
+    for(var id in positions) {
+      if (!positions[id]) {continue;}
+      i++;
 
-      let dist = positions[i].copy().sub(mouse);
+      let dist = positions[id].copy().sub(mouse);
       if(debug_info)
         p.text(dist.mag(), p.width, 10 + i * 10);
 
@@ -119,16 +121,16 @@ const map_sketch = function(p) {
       // willkürliche Distanz für vol=0: 400px
       vol = p.max(0, 1 - dist.mag() / dropoff_distance);
       if(debug_info)
-        p.text("vol " + i + " = " + vol, p.width, 200 + 10 * i);
+        p.text("vol " + id + " = " + vol, p.width, 200 + 10 * i);
 
       // set volume on media player
       if(window.players){
         try {
-          window.players[i].setVolume(vol)
+          window.players[id].setVolume(vol)
         } catch (e) {
-          console.warn("Could not set volume on player " + i + ": " + e);
+          console.warn("Could not set volume on player " + id + ": " + e);
           positions[i] = null;
-          console.log("Player " + i + " disabled.")
+          console.log("Player " + id + " disabled.")
         }
       }
     }

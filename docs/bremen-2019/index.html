@@ -24,12 +24,17 @@
       }
 
       function init() {
-          window.players = []
-          window.players[1] = initDashAudioPlayer(document.querySelector("#audio-c01"), "audio.mpd")
-          window.players[2] = initDashAudioPlayer(document.querySelector("#audio-c02"), "audio.mpd")
-          window.players[3] = initDashAudioPlayer(document.querySelector("#audio-c03"), "audio.mpd")
-          window.players[4] = initDashAudioPlayer(document.querySelector("#audio-c04"), "audio.mpd")
-          window.players[5] = initDashAudioPlayer(document.querySelector("#audio-c05"), "audio.mpd")
+
+          window.players = {
+            8022: initDashAudioPlayer(document.querySelector("#audio-c01"), "audio.mpd"), // 8022
+            8010: initDashAudioPlayer(document.querySelector("#audio-c01"), "audio.mpd"), // 8010
+            8024: initDashAudioPlayer(document.querySelector("#audio-c01"), "audio.mpd"), // 8024
+            8026: initDashAudioPlayer(document.querySelector("#audio-c01"), "audio.mpd"), // 8026
+            8015: initDashAudioPlayer(document.querySelector("#audio-c01"), "audio.mpd"), // 8015
+            8018: initDashAudioPlayer(document.querySelector("#audio-c01"), "audio.mpd"), // 8018
+            8019: initDashAudioPlayer(document.querySelector("#audio-c01"), "audio.mpd"), // 8019
+            8014: initDashAudioPlayer(document.querySelector("#audio-c01"), "audio.mpd"), // 8014
+          }
       }
 
       function startToListen(e){
@@ -39,11 +44,11 @@
           }
           document.querySelector("#intro").style.display = "none";
           document.querySelector(".bottom-ui").style.display = "block";
-          map_p5.frameRate(60); // start
+          map_p5.frameRate(30); // start
 
-          for (var i = 1; i < window.players.length; i++) {
-            if (!window.players[i]) {continue;}
-            window.players[i].play();
+          for(var id in window.players) {
+            if (!window.players[id]) {continue;}
+            window.players[id].play();
           }
       }
   </script>
