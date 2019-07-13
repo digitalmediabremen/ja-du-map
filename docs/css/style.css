@@ -58,8 +58,9 @@ body {
   cursor: pointer;
   position: absolute;
   z-index: 0;
-  width: 100vw;
+  min-width: 100vw;
   height: 100vh;
+  text-align: center;
 } 
 
 .popup {

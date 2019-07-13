@@ -1,5 +1,6 @@
 const map_sketch = function(p) {
-  let debug_info = false;
+  let debug_info = true;
+  let overwrite_volume = 0;
   var targetX, targetY, x, y;
   let ratio = 1;
   let img,       //image 
@@ -9,6 +10,8 @@ const map_sketch = function(p) {
   let dropoff_distance = 400; // in pixel (in ratio to screen)
 
   var audio_beginning = new Date('2019-05-13T05:00:00');
+  var duration = 10 * 60 * 60 // in seconds
+  var start_seek = 0 // in seconds (from the beginning of the streams) MUST BE WITHIN DURATION!
   var now;
   //var audio_beginning = (5 * 60 * 60 + 0 * 60 + 0) * 1000 // in millis since 00:00:00
 
@@ -20,36 +23,70 @@ const map_sketch = function(p) {
     p.createCanvas(p.windowWidth, p.windowHeight);
 
     imgRatio = img.width/img.height;
-    x = p.random(p.windowWidth);
+    x = 0;
     y = p.random(p.windowHeight);
 
-    targetX = x;
-    targetY = y;
-
-    p.print(x, y);
     p.windowResized();
 
     p.background(0);
     p.image(imgResized,0,0);
 
+    // set the target within a range (city center / coordinates from original image source)
+    targetX = p.random(2067, 2067 + 1677) * ratio;
+    targetY = p.random(1103, 1103 + 1144) * ratio;
+
     p.frameRate(0);
+
+    // calculate start
+    var now = moment();
+    var today_midnight = now.clone().startOf('day');
+    var seconds_since_midnight = now.diff(today_midnight, 'seconds');
+
+    // relative to current time of day
+    start_seek = Math.round((seconds_since_midnight / (24 * 60 * 60)) * duration);
+    console.log("Time of day (in percent): " + seconds_since_midnight / (24 * 60 * 60))
+    console.log("Start seek (in seconds): " + start_seek)
+
+    // set start on media players
+
+    // make sure start_seek is within duration
+    start_seek = Math.min(start_seek, duration)
+
+    for(var id in positions) {
+      if (!positions[id]) {continue;}
+      if(window.players){
+        try {
+          window.players[id].seek(start_seek)
+        } catch (e) {
+          console.warn("Could not set time on player " + id + ": " + e);
+          //positions[id] = null;
+          //console.log("Player " + id + " disabled.")
+        }
+      }
+    }
+    audio_beginning = moment(audio_beginning).add(start_seek, 'seconds');
   }
 
   p.windowResized  = function () {
-    p.resizeCanvas(p.windowWidth, p.windowHeight);
+    //p.resizeCanvas(p.windowWidth, p.windowHeight);
     p.print("resizing to: " + p.windowWidth + " " + p.windowHeight);
     if (p.windowWidth < img.width){
         imgResized = img.get();
         imgResized.resize(p.windowWidth,0);
         ratio = p.windowWidth/img.width;
+        // make canvas larger to (overfill) screen
+        p.resizeCanvas(p.windowWidth, imgResized.height);
     }
     if (p.windowHeight > imgResized.height){
         imgResized = img.get();
         imgResized.resize(0,p.windowHeight);
         ratio = p.windowHeight/img.height;
+        // make canvas larger to (overfill) screen
+        p.resizeCanvas(imgResized.width, p.windowHeight);
     }
     let dropoff_distance = 400 * ratio;
     console.debug("ratio:" + ratio)
+
 
     // positions in original image coordinates (transfered form photoshop)
 
@@ -86,6 +123,13 @@ const map_sketch = function(p) {
       p.stroke('rgba(255,255,255,1)');
       for(var id in positions) {
         if (!positions[id]) {continue;}
+        // show dropoff distance
+        p.stroke('red');
+        p.strokeWeight(1);
+        p.noFill()
+        p.circle(positions[id].x, positions[id].y, dropoff_distance * 2); // radius = * 2
+        // show dot
+        p.fill('red')
         p.circle(positions[id].x, positions[id].y, diameter);
       }
     }
@@ -118,15 +162,18 @@ const map_sketch = function(p) {
         p.text(dist.mag(), p.width, 10 + i * 10);
 
 
-      // willkürliche Distanz für vol=0: 400px
       vol = p.max(0, 1 - dist.mag() / dropoff_distance);
+      vol = Math.pow(vol, 3);
       if(debug_info)
-        p.text("vol " + id + " = " + vol, p.width, 200 + 10 * i);
+        p.text("vol " + id + " = " + Number(vol), p.width, 200 + 10 * i);
+
+      // debug: disable volume setting
+      //continue;
 
       // set volume on media player
       if(window.players){
         try {
-          window.players[id].setVolume(vol)
+          window.players[id].setVolume(overwrite_volume || vol)
         } catch (e) {
           console.warn("Could not set volume on player " + id + ": " + e);
           positions[id] = null;
