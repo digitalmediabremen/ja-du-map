@@ -1,1 +1,4 @@
-*/dash-audio-c01/*.m4s
+.DS_Store
+*.mp3
+*.mp4
+!*init.mp4
