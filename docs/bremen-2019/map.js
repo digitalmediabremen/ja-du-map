@@ -1,6 +1,6 @@
 const map_sketch = function(p) {
   let debug_info = false;
-  let overwrite_volume = 1;
+  let overwrite_volume = 0;
   var targetX, targetY, x, y;
   let ratio = 1;
   let img,       //image 
