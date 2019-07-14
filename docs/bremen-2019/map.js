@@ -9,10 +9,10 @@ const map_sketch = function(p) {
   var positions = {}; // dict
   let dropoff_distance = 400; // in pixel (in ratio to screen)
 
-  var audio_beginning = new Date('2019-05-13T05:00:00');
+  //var audio_beginning = moment(new Date('2019-05-13T05:00:00'));
+  var audio_beginning = moment(new Date('May 13, 2019 05:00:00 GMT+02:00'));
   var duration = 10 * 60 * 60 // in seconds
   var start_seek = 0 // in seconds (from the beginning of the streams) MUST BE WITHIN DURATION!
-  var now;
   //var audio_beginning = (5 * 60 * 60 + 0 * 60 + 0) * 1000 // in millis since 00:00:00
 
   p.preload = function () {
@@ -39,13 +39,17 @@ const map_sketch = function(p) {
 
     // calculate start
     var now = moment();
+    //console.log(now.format("MMMM Do YYYY HH:mm:ss"));
+    //console.log(audio_beginning.format("MMMM Do YYYY HH:mm:ss"));
     var today_midnight = now.clone().startOf('day');
     var seconds_since_midnight = now.diff(today_midnight, 'seconds');
+    //console.log(now.diff(today_midnight, 'hours'));
 
     // relative to current time of day
     start_seek = Math.round((seconds_since_midnight / (24 * 60 * 60)) * duration);
     console.log("Time of day (in percent): " + seconds_since_midnight / (24 * 60 * 60))
     console.log("Start seek (in seconds): " + start_seek)
+    audio_beginning.add(start_seek, 'seconds');
 
     // set start on media players
 
@@ -64,7 +68,6 @@ const map_sketch = function(p) {
         }
       }
     }
-    audio_beginning = moment(audio_beginning).add(start_seek, 'seconds');
   }
 
   p.windowResized  = function () {
@@ -85,7 +88,7 @@ const map_sketch = function(p) {
         p.resizeCanvas(imgResized.width, p.windowHeight);
     }
     let dropoff_distance = 400 * ratio;
-    console.debug("ratio:" + ratio)
+    console.log("Image ratio: " + ratio)
 
 
     // positions in original image coordinates (transfered form photoshop)
@@ -113,7 +116,7 @@ const map_sketch = function(p) {
     p.image(imgResized,0,0);
 
     //update ui time
-    now = moment(audio_beginning).add(p.millis(), 'milliseconds');
+    var now = audio_beginning.clone().add(p.millis(), 'milliseconds');
     window.document.querySelector("#time").innerHTML = now.format("MMMM Do YYYY HH:mm:ss");
 
     if(debug_info){
