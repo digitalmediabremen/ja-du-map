@@ -16,8 +16,11 @@ html.page-positive, html.page-positive body {
 
 body {
   margin: 0;
-  display: flex;
   justify-content: center;
+}
+
+.page-map body {
+  display: flex;
 }
 
 .container {
@@ -39,10 +42,23 @@ body {
   .column {
     flex: 100%;
   }
+  .images > figure {
+    flex: 100%;
+  }
 }
 
-.description {
-  width: 50%;
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.images > figure {
+  flex: 30%;
+  min-width: 200px;
+  margin: 1em;
 }
 
 .images img {
@@ -103,7 +119,7 @@ button:hover, .button:hover {
   background: black;
   border: 2px solid black;
   color: white;
-  cursor: pointer; /* TODO: Does not work! */;
+  cursor: pointer;
 }
 
 .bottom-ui {
@@ -132,6 +148,16 @@ button:hover, .button:hover {
 
 @media (max-width: 750px) {
 
+  html, body {
+    height: auto;
+    min-width: 0;
+    background: white;
+  }
+
+  body {
+    display: block;
+  }
+
   /* description */
   .container {
     padding: 2em;
@@ -139,14 +165,14 @@ button:hover, .button:hover {
 
   /* map */
   #sketch {
-    display: hidden;
+    display: none;
   }
 
   .popup {
     margin: 0;
     width: auto;
     height: auto;
-    min-width: none;
+    min-width: 0;
   }
 
   a.btn-listen {
