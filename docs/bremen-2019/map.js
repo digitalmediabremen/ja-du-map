@@ -1,6 +1,6 @@
 const map_sketch = function(p) {
   let debug_info = false;
-  let overwrite_volume = 0;
+  let overwrite_volume = 1;
   var targetX, targetY, x, y;
   let ratio = 1;
   let img,       //image 
@@ -23,8 +23,6 @@ const map_sketch = function(p) {
     p.createCanvas(p.windowWidth, p.windowHeight);
 
     imgRatio = img.width/img.height;
-    x = 0;
-    y = p.random(p.windowHeight);
 
     p.windowResized();
 
@@ -32,8 +30,10 @@ const map_sketch = function(p) {
     p.image(imgResized,0,0);
 
     // set the target within a range (city center / coordinates from original image source)
-    targetX = p.random(2067, 2067 + 1677) * ratio;
-    targetY = p.random(1103, 1103 + 1144) * ratio;
+    x = p.random(2067, 2067 + 1677) * ratio;
+    y = p.random(1103, 1103 + 1144) * ratio;
+    targetX = x;
+    targetY = y;
 
     p.frameRate(0);
 
