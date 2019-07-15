@@ -80,7 +80,7 @@ const map_sketch = function(p) {
         // make canvas larger to (overfill) screen
         p.resizeCanvas(p.windowWidth, imgResized.height);
     }
-    if (p.windowHeight > imgResized.height){
+    if (p.windowHeight < img.height){
         imgResized = img.get();
         imgResized.resize(0,p.windowHeight);
         ratio = p.windowHeight/img.height;
