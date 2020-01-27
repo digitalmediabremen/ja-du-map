@@ -1,0 +1,65 @@
+pcm.E26_1_0 {
+        type plug
+        slave.pcm {
+        type dshare
+        ipc_key 123456
+        slave.pcm "hw:3"
+        slave.channels 6
+        bindings.0 0
+        }   
+}
+
+pcm.E26_1_1 {
+        type plug
+        slave.pcm {
+        type dshare
+        ipc_key 123456
+        slave.pcm "hw:3"
+        slave.channels 6
+        bindings.0 1
+        }   
+}
+
+pcm.E26_1_2 {
+        type plug
+        slave.pcm {
+        type dshare
+        ipc_key 123456
+        slave.pcm "hw:3"
+        slave.channels 6
+        bindings.0 2
+        }   
+}
+
+pcm.E26_1_3 {
+        type plug
+        slave.pcm {
+        type dshare
+        ipc_key 123456
+        slave.pcm "hw:3"
+        slave.channels 6
+        bindings.0 3
+        }   
+}
+
+pcm.E26_1_4 {
+        type plug
+        slave.pcm {
+        type dshare
+        ipc_key 123456
+        slave.pcm "hw:3"
+        slave.channels 6
+        bindings.0 4
+        }   
+}
+
+pcm.E26_1_5 {
+        type plug
+        slave.pcm {
+        type dshare
+        ipc_key 123456
+        slave.pcm "hw:3"
+        slave.channels 6
+        bindings.0 5
+        }   
+}
